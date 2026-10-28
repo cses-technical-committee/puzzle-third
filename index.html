@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECHNOVA: Puzzle Adventure — CSES JNGEC</title>
+  <meta name="description" content="TECHNOVA 2026 — Puzzle Adventure. Six nodes, six letters, one secret word.">
+  <link rel="icon" type="image/png" href="assets/logo/cses-logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+<!-- ============================ HEADER ============================ -->
+<header class="app-header">
+  <div class="header-brand">
+    <img src="assets/logo/cses-logo.png" alt="CSES" class="header-logo" id="hdr-logo" onerror="this.style.display='none'">
+    <span class="brand-sep"></span>
+    <div class="header-info">
+      <span class="header-title">TECHNOVA 2026</span>
+      <span class="header-sub">CSES · JNGEC Sundernagar</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="team-chip" id="header-team-chip" hidden>
+      <span class="team-chip-label">TEAM</span>
+      <span class="team-chip-name" id="header-team-name"></span>
+    </span>
+    <div class="timer-chip" id="timer-chip" style="display:none">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="timer-text">00:00:00</span>
+    </div>
+    <button class="hdr-btn" id="btn-sound" title="Sound on/off" aria-label="Toggle sound">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    </button>
+  </div>
+</header>
+ 
+<main class="main">
+ 
+  <!-- ============================ ENTRY ============================ -->
+  <section class="screen" id="screen-entry">
+    <div class="entry-box">
+      <div class="mascot-wrap">
+        <img src="assets/mascot.jpg" alt="Mascot" class="mascot-img" onerror="this.style.display='none'">
+        <div class="mascot-shadow"></div>
+      </div>
+      <span class="entry-badge">CSES · JNGEC Sundernagar · 2026</span>
+      <h1 class="entry-heading">TECHNOVA</h1>
+      <p class="entry-subheading">Puzzle Adventure</p>
+ 
+      <div class="entry-card">
+        <div class="team-name-field">
+          <label class="team-name-label" for="team-name">Team Name</label>
+          <input class="team-name-input" id="team-name" type="text" maxlength="40"
+            placeholder="Enter your team name" autocomplete="organization" required>
+          <p class="team-name-error" id="team-name-error" aria-live="polite"></p>
+        </div>
+        <ul class="rules">
+          <li><span>🗺️</span> Follow the road — <b>6 nodes</b>, <b>3 questions</b> each.</li>
+          <li><span>🔑</span> Every node you finish gives you <b>1 secret letter</b>.</li>
+          <li><span>🧠</span> Remember your letters — they are <b>not saved</b> anywhere for you!</li>
+          <li><span>🔓</span> At the end, arrange all letters into <b>one meaningful word</b> to open the vault.</li>
+          <li><span>⏱️</span> Timer starts now and stops when the vault opens. Be quick!</li>
+        </ul>
+        <p class="cfg-warn" id="cfg-warn"></p>
+        <button class="btn-start" id="btn-start">🚀 START ADVENTURE</button>
+      </div>
+      <p class="entry-tagline">No answers are checked until the very end.</p>
+    </div>
+  </section>
+ 
+  <!-- ============================ MAP ============================ -->
+  <section class="screen" id="screen-map">
+    <div class="map-topbar">
+      <div>
+        <h2 class="map-heading">🗺 Adventure Map</h2>
+        <p class="map-info">Tap the glowing node to begin.</p>
+      </div>
+      <div class="map-progress-pill">
+        <span id="map-prog-text">0 / 6</span>
+        <div class="map-prog-track"><div class="map-prog-bar" id="map-prog-bar"></div></div>
+      </div>
+    </div>
+    <div class="map-stage" id="map-stage"></div>
+  </section>
+ 
+  <!-- ============================ NODE (QUESTIONS) ============================ -->
+  <section class="screen" id="screen-node">
+    <div class="node-layout">
+      <div class="node-topbar">
+        <button class="btn-ghost" id="node-back">← Map</button>
+        <span class="node-tag" id="node-tag">Node 1</span>
+      </div>
+ 
+      <div class="node-banner">
+        <div class="node-banner-icon" id="node-icon">🧠</div>
+        <div class="node-banner-text">
+          <h1 class="node-title" id="node-title">Logical Reasoning</h1>
+          <p class="node-desc" id="node-desc"></p>
+        </div>
+      </div>
+ 
+      <div class="q-list" id="q-list"></div>
+    </div>
+ 
+    <div class="node-footer">
+      <div class="node-progress">
+        <span id="node-answered">0 / 3 answered</span>
+        <div class="node-dots" id="node-dots"></div>
+      </div>
+      <button class="btn-submit" id="btn-submit-node" disabled>Submit Node ✓</button>
+    </div>
+  </section>
+ 
+  <!-- ============================ VAULT ============================ -->
+  <section class="screen" id="screen-vault">
+    <div class="vault-layout">
+      <div class="vault-topbar">
+        <span class="vault-super">⚡ Final Challenge</span>
+        <h1 class="vault-title">THE FINAL VAULT</h1>
+        <p class="vault-inst">Arrange the letters you collected to form <b>one meaningful word</b>.</p>
+      </div>
+ 
+      <div class="vault-door" id="vault-door">
+        <div class="vr vr3"></div>
+        <div class="vr vr2"></div>
+        <div class="vr vr1"></div>
+        <div class="vault-icon" id="vault-icon">🔒</div>
+      </div>
+ 
+      <div class="vault-slots" id="vault-slots"></div>
+      <div class="vault-msg" id="vault-msg"></div>
+ 
+      <div class="vault-tray-wrap" id="vault-tray-wrap" style="display:none">
+        <p class="pool-label">Your letters (hint)</p>
+        <div class="vault-tray" id="vault-tray"></div>
+      </div>
+ 
+      <div class="vault-keys" id="vault-keys"></div>
+ 
+      <div class="vault-actions">
+        <button class="btn-ghost" id="btn-vault-back">← Map</button>
+        <button class="btn-ghost" id="btn-vault-del">⌫ Delete</button>
+        <button class="btn-ghost" id="btn-vault-clear">↺ Clear</button>
+        <button class="btn-unlock" id="btn-vault-unlock">🔓 UNLOCK VAULT</button>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ============================ RESULT ============================ -->
+  <section class="screen" id="screen-result">
+    <div class="result-layout">
+      <span class="victory-super">🏆 Vault Unlocked!</span>
+      <h1 class="victory-title">PUZZLE COMPLETE!</h1>
+ 
+      <div class="eval-box" id="res-eval">
+        <div class="spinner"></div>
+        <p>Evaluating your answers…</p>
+      </div>
+ 
+      <div class="result-body" id="res-body" style="display:none">
+        <p class="evaluation-team-name">Team: <span id="res-team-name"></span></p>
+        <p class="victory-sub">Here is how you did</p>
+        <div class="score-ring">
+          <div class="score-num" id="res-score">0 / 18</div>
+          <div class="score-cap">Total Marks</div>
+        </div>
+        <div class="victory-stats">
+          <div class="stat-card">
+            <div class="stat-icon">⏱</div>
+            <div class="stat-label">Total Time</div>
+            <div class="stat-val" id="res-time">00:00:00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔑</div>
+            <div class="stat-label">Secret Word</div>
+            <div class="stat-val" id="res-word">—</div>
+          </div>
+        </div>
+        <div class="victory-actions">
+          <button class="btn-review" id="btn-review">📋 View Answers</button>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- ============================ REVIEW ============================ -->
+  <section class="screen" id="screen-review">
+    <div class="review-layout">
+      <div class="review-topbar">
+        <button class="btn-ghost" id="btn-review-back">← Result</button>
+        <h2 class="review-heading">📋 Answer Review</h2>
+        <span class="review-team-name" id="review-team-name"></span>
+        <span class="review-badge" id="review-badge">—</span>
+      </div>
+      <div class="review-body" id="review-list"></div>
+    </div>
+  </section>
+ 
+</main>
+ 
+<!-- ============================ LETTER REVEAL (fullscreen) ============================ -->
+<div class="reveal" id="reveal" role="dialog" aria-live="polite" tabindex="-1">
+  <div class="reveal-burst"></div>
+  <div class="reveal-particles" id="rv-particles"></div>
+  <div class="reveal-box">
+    <div class="reveal-node" id="rv-node">Node 1</div>
+    <div class="reveal-head">NODE COMPLETE!</div>
+    <div class="reveal-sub">Your secret letter is</div>
+    <div class="reveal-orb" id="rv-orb">S</div>
+    <div class="reveal-count" id="rv-count">Letter 1 of 6</div>
+    <div class="reveal-note" id="rv-note"></div>
+    <div class="reveal-tap">Tap anywhere to continue</div>
+  </div>
+</div>
+ 
+<div class="toast-layer" id="toasts"></div>
+<div class="celebration" id="confetti"></div>
+ 
+<script src="config.js"></script>
+<script src="questions.js"></script>
+<script src="audio.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

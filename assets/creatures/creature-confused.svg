@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <radialGradient id="confGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F87171" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#F87171" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGradC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#64748B"/>
+      <stop offset="50%" stop-color="#6B7280"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="bellyGradC" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F1F5F9"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="softGlowC" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <circle cx="80" cy="85" r="55" fill="url(#confGlow)" />
+
+  <!-- Tilted Body (Gentle head tilt) -->
+  <g transform="rotate(-7 80 85)">
+    <!-- Drooping Tail -->
+    <path d="M 45,95 Q 26,105 24,88 Q 32,80 40,86 Z" fill="url(#bodyGradC)"/>
+
+    <!-- Asymmetric drooping ears -->
+    <path d="M 50,48 Q 34,26 54,36 Z" fill="url(#bodyGradC)"/>
+    <path d="M 110,42 Q 126,20 102,32 Z" fill="url(#bodyGradC)"/>
+
+    <!-- Head & Body -->
+    <ellipse cx="80" cy="84" rx="42" ry="38" fill="url(#bodyGradC)"/>
+    <ellipse cx="80" cy="95" rx="24" ry="18" fill="url(#bellyGradC)"/>
+
+    <!-- Dim Crest -->
+    <polygon points="80,50 84,58 80,62 76,58" fill="#F5C66B" opacity="0.6"/>
+
+    <!-- Confused Spiral/Curious Eyes -->
+    <!-- Left Eye: Spiral/swirl -->
+    <circle cx="66" cy="76" r="7" fill="#0F172A"/>
+    <path d="M 64,74 Q 68,73 68,76 Q 67,78 64,77" fill="none" stroke="#63D9E8" stroke-width="1.8"/>
+
+    <!-- Right Eye: Wide blink -->
+    <circle cx="94" cy="76" r="7" fill="#0F172A"/>
+    <circle cx="96" cy="74" r="2.5" fill="#FFFFFF"/>
+
+    <!-- Wobbly Mouth -->
+    <path d="M 74,88 Q 77,85 80,88 Q 83,91 86,88" fill="none" stroke="#0F172A" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Shrugging Paws -->
+    <circle cx="54" cy="98" r="5" fill="#94A3B8"/>
+    <circle cx="106" cy="98" r="5" fill="#94A3B8"/>
+
+    <!-- Sweat Drop -->
+    <path d="M 112,58 Q 116,63 112,67 Q 108,63 112,58 Z" fill="#63D9E8" opacity="0.8"/>
+  </g>
+</svg>

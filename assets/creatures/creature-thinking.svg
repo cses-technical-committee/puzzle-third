@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <radialGradient id="thinkGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGradT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="bellyGradT" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0E7FF"/>
+      <stop offset="100%" stop-color="#A5B4FC"/>
+    </linearGradient>
+    <filter id="softGlowT" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <circle cx="80" cy="85" r="55" fill="url(#thinkGlow)" />
+
+  <g transform="translate(0, 4)">
+    <!-- Tail curled in focus -->
+    <path d="M 45,95 Q 24,90 28,70 Q 36,65 42,75 Z" fill="url(#bodyGradT)" opacity="0.9"/>
+    <circle cx="28" cy="68" r="4" fill="#8B5CF6" filter="url(#softGlowT)"/>
+
+    <!-- Left Ear tilted -->
+    <path d="M 50,45 Q 36,20 56,32 Z" fill="url(#bodyGradT)"/>
+    <path d="M 52,40 Q 42,26 55,34 Z" fill="#63D9E8" opacity="0.8"/>
+
+    <!-- Right Ear perked up -->
+    <path d="M 110,43 Q 124,12 102,28 Z" fill="url(#bodyGradT)"/>
+    <path d="M 108,38 Q 118,20 104,30 Z" fill="#63D9E8" opacity="0.8"/>
+
+    <!-- Head / Body -->
+    <ellipse cx="80" cy="82" rx="42" ry="38" fill="url(#bodyGradT)"/>
+    <ellipse cx="80" cy="94" rx="24" ry="18" fill="url(#bellyGradT)" opacity="0.9"/>
+
+    <!-- Forehead Crest -->
+    <polygon points="80,48 85,58 80,62 75,58" fill="#F5C66B" filter="url(#softGlowT)"/>
+    <circle cx="80" cy="55" r="2" fill="#FFFFFF"/>
+
+    <!-- Thinking Eyes (Looking Up & Right) -->
+    <ellipse cx="68" cy="74" rx="6.5" ry="8" fill="#0F172A"/>
+    <circle cx="71" cy="70" r="3" fill="#FFFFFF"/>
+
+    <ellipse cx="96" cy="74" rx="6.5" ry="8" fill="#0F172A"/>
+    <circle cx="99" cy="70" r="3" fill="#FFFFFF"/>
+
+    <!-- Cheeks -->
+    <circle cx="58" cy="86" r="4" fill="#F472B6" opacity="0.4"/>
+    <circle cx="104" cy="86" r="4" fill="#F472B6" opacity="0.4"/>
+
+    <!-- Pensive / Curious mouth -->
+    <ellipse cx="80" cy="87" rx="3" ry="2.5" fill="#0F172A"/>
+
+    <!-- Paw to Chin Pose -->
+    <circle cx="60" cy="104" r="5" fill="#63D9E8"/>
+    <circle cx="84" cy="91" r="5.5" fill="#63D9E8" filter="url(#softGlowT)"/> <!-- Right paw touching chin -->
+
+    <!-- Thought Sparks floating -->
+    <circle cx="118" cy="42" r="3" fill="#F5C66B" filter="url(#softGlowT)"/>
+    <circle cx="128" cy="28" r="4.5" fill="#63D9E8" filter="url(#softGlowT)"/>
+    <text x="122" y="24" font-family="sans-serif" font-size="14" font-weight="900" fill="#F5C66B">?</text>
+  </g>
+</svg>

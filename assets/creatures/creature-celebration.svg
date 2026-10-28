@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <radialGradient id="celGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F5C66B" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#8B5CF6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGradCel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5C66B"/>
+      <stop offset="40%" stop-color="#EC4899"/>
+      <stop offset="80%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="crownGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="softGlowCel" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Radiant Aura -->
+  <circle cx="80" cy="80" r="70" fill="url(#celGlow)" filter="url(#softGlowCel)"/>
+
+  <g transform="translate(0, -8)">
+    <!-- Confetti Stars & Sparks -->
+    <polygon points="25,30 28,37 35,40 28,43 25,50 22,43 15,40 22,37" fill="#FDE047" filter="url(#softGlowCel)"/>
+    <polygon points="135,28 138,34 144,36 138,38 135,44 132,38 126,36 132,34" fill="#67E8F9" filter="url(#softGlowCel)"/>
+    <circle cx="38" cy="18" r="3" fill="#F472B6"/>
+    <circle cx="124" cy="15" r="3.5" fill="#A78BFA"/>
+    <polygon points="80,12 83,18 90,20 83,22 80,28 77,22 70,20 77,18" fill="#FBBF24" filter="url(#softGlowCel)"/>
+
+    <!-- Tail in Super Wag -->
+    <path d="M 45,95 Q 10,60 22,35 Q 36,36 38,65 Z" fill="url(#bodyGradCel)"/>
+    <circle cx="22" cy="35" r="6" fill="#FDE047" filter="url(#softGlowCel)"/>
+
+    <!-- Ears -->
+    <path d="M 46,45 Q 28,8 58,24 Z" fill="url(#bodyGradCel)"/>
+    <path d="M 114,45 Q 132,8 102,24 Z" fill="url(#bodyGradCel)"/>
+
+    <!-- Champion Crown -->
+    <polygon points="68,36 72,24 80,30 88,24 92,36 80,38" fill="url(#crownGrad)" stroke="#B45309" stroke-width="1.2" filter="url(#softGlowCel)"/>
+    <circle cx="72" cy="23" r="2" fill="#FFFFFF"/>
+    <circle cx="80" cy="29" r="2" fill="#FFFFFF"/>
+    <circle cx="88" cy="23" r="2" fill="#FFFFFF"/>
+
+    <!-- Main Body Floating in Triumph -->
+    <ellipse cx="80" cy="80" rx="43" ry="37" fill="url(#bodyGradCel)"/>
+    <ellipse cx="80" cy="90" rx="25" ry="19" fill="#FFFBEB" opacity="0.95"/>
+
+    <!-- Radiant Eyes -->
+    <ellipse cx="64" cy="74" rx="7.5" ry="9" fill="#0F172A"/>
+    <circle cx="67" cy="71" r="3.5" fill="#FFFFFF"/>
+    <polygon points="65,77 66,79 68,79 67,81 68,83 66,82 64,83 65,81" fill="#FDE047"/>
+
+    <ellipse cx="96" cy="74" rx="7.5" ry="9" fill="#0F172A"/>
+    <circle cx="99" cy="71" r="3.5" fill="#FFFFFF"/>
+    <polygon points="97,77 98,79 100,79 99,81 100,83 98,82 96,83 97,81" fill="#FDE047"/>
+
+    <!-- Vibrant Cheeks -->
+    <circle cx="54" cy="84" r="5.5" fill="#F43F5E" opacity="0.7"/>
+    <circle cx="106" cy="84" r="5.5" fill="#F43F5E" opacity="0.7"/>
+
+    <!-- Giant Beam Smile -->
+    <path d="M 70,82 Q 80,98 90,82 Z" fill="#E11D48"/>
+    <path d="M 73,83 Q 80,88 87,83" fill="#FFFFFF"/>
+
+    <!-- Triumph Arms/Paws Reaching to Sky -->
+    <circle cx="42" cy="60" r="7" fill="#FDE047" filter="url(#softGlowCel)"/>
+    <circle cx="118" cy="60" r="7" fill="#FDE047" filter="url(#softGlowCel)"/>
+  </g>
+</svg>
